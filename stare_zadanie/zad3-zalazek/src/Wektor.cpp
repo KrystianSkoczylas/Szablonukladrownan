@@ -42,7 +42,7 @@ TYP Wektor<TYP,ROZMIAR>::operator * (const Wektor<TYP,ROZMIAR> & W2) const /*mno
 
 template <class TYP, int ROZMIAR>
 Wektor<TYP,ROZMIAR> Wektor<TYP,ROZMIAR>::operator * (TYP skalar) const /*mnozeniewektoraprzezliczbe*/
-{
+{//W*2
   Wektor<TYP,ROZMIAR> wyn;
   for(int i=0;i<ROZMIAR;++i)
     {
@@ -53,7 +53,7 @@ Wektor<TYP,ROZMIAR> Wektor<TYP,ROZMIAR>::operator * (TYP skalar) const /*mnozeni
 
 template <class TYP, int ROZMIAR>
 Wektor<TYP,ROZMIAR> operator * (TYP skalar, const Wektor<TYP,ROZMIAR> & W2) /*mnozenie liczby przez wektor */
-{
+{//2*W
   Wektor<TYP,ROZMIAR> wyn;
   for(int i=0;i<ROZMIAR;++i)
     {
@@ -61,6 +61,7 @@ Wektor<TYP,ROZMIAR> operator * (TYP skalar, const Wektor<TYP,ROZMIAR> & W2) /*mn
     }
   return wyn;
 }
+
 template <class TYP, int ROZMIAR>
 Wektor<TYP,ROZMIAR>  Wektor<TYP,ROZMIAR>::operator + (const Wektor<TYP,ROZMIAR> & W2) const /*dodawaniewektorow */
 {//dziala bez &
@@ -91,7 +92,5 @@ Wektor<TYP,ROZMIAR>  Wektor<TYP,ROZMIAR>::operator - (const Wektor<TYP,ROZMIAR> 
   wyn[2]=W1[0]*W2[1]-W1[1]*W2[0];
   return wyn;
   }*/
-
-//template<>  class Wektor<double,3>;
 
 

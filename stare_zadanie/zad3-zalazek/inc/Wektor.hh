@@ -1,6 +1,5 @@
 #ifndef WEKTOR_HH
 #define WEKTOR_HH
-
 //#include "rozmiar.h"
 #include <iostream>
 
@@ -41,7 +40,6 @@ std::istream& operator >> (std::istream &Strm, Wektor<TYP,ROZMIAR> &Wek); /*wczy
 
 template <class TYP, int ROZMIAR>
 std::ostream& operator << (std::ostream &Strm, const Wektor<TYP,ROZMIAR> &Wek); /*wyswietlenie wektora OK*/
-
 
 //Wektor iloczyn_wektorowy (Wektor & W1,Wektor & W2);//iloczyn wektorowy jest tylko dla ROZMIAR3
 
