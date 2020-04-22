@@ -30,12 +30,14 @@ std::ostream& operator << (std::ostream &Strm, const Wektor<TYP,ROZMIAR> &Wek)
     }
   return sqrt(wyn);
 }*/
+
 template <class TYP, int ROZMIAR>
 TYP Wektor<TYP,ROZMIAR>::operator * (const Wektor<TYP,ROZMIAR> & W2) const /*mnozenie wektorow iloczyn skalarny */
 {
   TYP wyn;
   for (int i=0;i<ROZMIAR;++i) {
-    wyn += tab[i] * W2.tab[i];
+    wyn = wyn + tab[i] * W2.tab[i];
+    // wyn += tab[i] * W2.tab[i]; To nie dziala ?
   }
   return wyn;
 }
