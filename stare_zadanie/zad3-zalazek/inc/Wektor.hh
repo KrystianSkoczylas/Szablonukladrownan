@@ -30,6 +30,7 @@ public:
   Wektor<TYP,ROZMIAR> operator * (TYP skalar) const; // W * 2 OK
   Wektor<TYP,ROZMIAR>  operator + (const Wektor<TYP,ROZMIAR> & W2) const;//OK bez & bez const
   Wektor<TYP,ROZMIAR>  operator - (const Wektor<TYP,ROZMIAR> & W2) const;//OK bez &
+  Wektor<TYP,ROZMIAR> operator / (TYP skalar) const;//  W / 2 Potrzebne?
 };
 
 template <class TYP, int ROZMIAR>

@@ -108,16 +108,15 @@ LZespolona operator = (LZespolona Skl1,LZespolona Skl2)
   //must be a nonstatic member function
 }
 */
-LZespolona operator += (LZespolona Skl1,LZespolona Skl2)
+LZespolona LZespolona::operator += (LZespolona Skl)
 {
-  LZespolona Wynik;
-  Wynik.re=Skl1.re+Skl2.re;
-  Wynik.im=Skl1.im+Skl2.im;
-  return Wynik;
+  re+=Skl.re;
+  im+=Skl.im;
+  return *this;
 }
 //x+=y to samo co x=x+y 
 
-LZespolona &LZespolona::operator = (double  Liczba)
+LZespolona LZespolona::operator = (double  Liczba)
 {
   this->re = Liczba; this->im = 0;
   return *this;

@@ -36,8 +36,8 @@ TYP Wektor<TYP,ROZMIAR>::operator * (const Wektor<TYP,ROZMIAR> & W2) const /*mno
 {
   TYP wyn;
   for (int i=0;i<ROZMIAR;++i) {
-    wyn = wyn + tab[i] * W2.tab[i];
-    // wyn += tab[i] * W2.tab[i]; To nie dziala ?
+    // wyn = wyn + tab[i] * W2.tab[i];
+    wyn += tab[i] * W2.tab[i]; //Obie ok
   }
   return wyn;
 }
@@ -49,6 +49,16 @@ Wektor<TYP,ROZMIAR> Wektor<TYP,ROZMIAR>::operator * (TYP skalar) const /*mnozeni
   for(int i=0;i<ROZMIAR;++i)
     {
       wyn[i]=tab[i]*skalar;
+    }
+  return wyn;
+}
+template <class TYP, int ROZMIAR>
+Wektor<TYP,ROZMIAR> Wektor<TYP,ROZMIAR>::operator / (TYP skalar) const
+{// W/2
+  Wektor<TYP,ROZMIAR> wyn;
+  for(int i=0;i<ROZMIAR;++i)
+    {
+      wyn[i]=tab[i]/skalar;
     }
   return wyn;
 }

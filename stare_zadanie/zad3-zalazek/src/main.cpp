@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Wektor.hh"
 #include "LZespolona.hh"
-//#include "SWektor.cpp"
+//#include "SWektor.cpp" Nie potrzebne
 
 //#include "Macierz.hh"
 //#include "UkladRownanLiniowych.hh"
@@ -92,7 +92,8 @@ int main()
       cout<<"Dodawanie E1+E2: "<<E1+E2<<endl;
       cout<<"Odjmowanie E1-E2: "<<E1-E2<<endl;
       cout<<"E1*3: "<<E1*3<<endl;
-      //cout<<"2*E1: "<<(2*E1)<<endl;
+      cout<<"2.0*E1: "<<2.0*E1<<endl;
+      cout<<"E1/2: "<<E1/2<<endl;
       cout<<"iloczyn skalarny E1*E2: "<<E1*E2<<endl; 
     }
 
@@ -116,9 +117,10 @@ int main()
       LZespolona Z;
       Z=utworz(1,-2);
       cout<<"S1*Z(1-2i): "<< S1*Z <<endl;
-      //cout<<"S1*(1-2I): "<<S1*(1-2i)<<endl;
-      //cout<<"S1*2: "<<S1*2<<endl;
+      //cout<<"S1*(1-2I): "<<S1*(1-2i)<<endl; Nie potrzebne
+      //cout<<"S1*2: "<<S1*2<<endl; Nie potrzebne
       cout<<"Z(1-2i)*S1: "<<Z*S1<<endl;
+      cout<<"S1/Z(1-2i): "<<S1/Z<<endl;
     }
 }
 
