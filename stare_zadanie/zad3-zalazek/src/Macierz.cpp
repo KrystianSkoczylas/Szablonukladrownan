@@ -1,6 +1,7 @@
 #include "Macierz.hh"
 
-std::istream& operator >> (std::istream &Strm, Macierz &Mac) /*wczytanie macierzy */
+template <class TYP, int ROZMIAR>
+std::istream& operator >> (std::istream &Strm, Macierz<TYP,ROZMIAR> &Mac) /*wczytanie macierzy */
 {
   for(int i=0;i<ROZMIAR;++i)
     {
@@ -9,7 +10,8 @@ std::istream& operator >> (std::istream &Strm, Macierz &Mac) /*wczytanie macierz
   return Strm;
 }
 
-std::ostream& operator << (std::ostream &Strm, const Macierz &Mac)/*wyswietlenie macierzy */
+template <class TYP, int ROZMIAR>
+std::ostream& operator << (std::ostream &Strm, const Macierz<TYP,ROZMIAR> &Mac)/*wyswietlenie macierzy */
 {
   for(int i=0;i<ROZMIAR;++i)
     {
@@ -18,9 +20,10 @@ std::ostream& operator << (std::ostream &Strm, const Macierz &Mac)/*wyswietlenie
   return Strm;
 }
 
- Macierz  Macierz::operator + (const Macierz & W) const
+template <class TYP, int ROZMIAR>
+ Macierz<TYP,ROZMIAR>  Macierz<TYP,ROZMIAR>::operator + (const Macierz<TYP,ROZMIAR> & W) const
 { // dziala bez &
-  Macierz wyn;
+  Macierz<TYP,ROZMIAR> wyn;
   for(int i=0;i<ROZMIAR;++i)
     {
       for(int j=0;j<ROZMIAR;++j)
@@ -31,9 +34,10 @@ std::ostream& operator << (std::ostream &Strm, const Macierz &Mac)/*wyswietlenie
   return wyn;
 }
 
- Macierz  Macierz::operator - (const Macierz & W) const
+template <class TYP, int ROZMIAR>
+ Macierz<TYP,ROZMIAR>  Macierz<TYP,ROZMIAR>::operator - (const Macierz<TYP,ROZMIAR> & W) const
 {// dziala bez &
-  Macierz wyn;
+  Macierz<TYP,ROZMIAR> wyn;
   for(int i=0;i<ROZMIAR;++i)
     {
       for(int j=0;j<ROZMIAR;++j)
@@ -44,9 +48,10 @@ std::ostream& operator << (std::ostream &Strm, const Macierz &Mac)/*wyswietlenie
   return wyn;
 }
 
- Macierz  Macierz::operator * (const Macierz & W) const /*mnozenie macierzy */
+template <class TYP, int ROZMIAR>
+ Macierz<TYP,ROZMIAR>  Macierz<TYP,ROZMIAR>::operator * (const Macierz<TYP,ROZMIAR> & W) const /*mnozeniemacie */
 {//dziala bez &
-  Macierz wyn;
+  Macierz<TYP,ROZMIAR> wyn;
   for(int i=0;i<ROZMIAR;++i)
     {
       for(int j=0;j<ROZMIAR;++j)
@@ -58,9 +63,10 @@ std::ostream& operator << (std::ostream &Strm, const Macierz &Mac)/*wyswietlenie
   return wyn;
 }
 
- Wektor  Macierz::operator * (const Wektor & W) const /*mnozenie macierzy przez wektor */
+template <class TYP, int ROZMIAR>
+ Wektor<TYP,ROZMIAR>  Macierz<TYP,ROZMIAR>::operator * (const Wektor<TYP,ROZMIAR> & W) const /*macierzyprzezwer */
 {//dziala bez &
-  Wektor wyn;
+  Wektor<TYP,ROZMIAR> wyn;
   for(int i=0;i<ROZMIAR;++i)
     {
       for(int j=0;j<ROZMIAR;++j)
@@ -71,9 +77,10 @@ std::ostream& operator << (std::ostream &Strm, const Macierz &Mac)/*wyswietlenie
   return wyn;
 }
 
- Macierz  Macierz::transpozycja() const
+template <class TYP, int ROZMIAR>
+ Macierz<TYP,ROZMIAR>  Macierz<TYP,ROZMIAR>::transpozycja() const
 {// dziala bez &
-  Macierz wyn;
+  Macierz<TYP,ROZMIAR> wyn;
   for(int i=0;i<ROZMIAR;++i)
     {
       for(int j=0;j<ROZMIAR;++j)
@@ -84,7 +91,8 @@ std::ostream& operator << (std::ostream &Strm, const Macierz &Mac)/*wyswietlenie
   return wyn;
 }
 
-double Macierz::Wyznacznik()const
+template <class TYP, int ROZMIAR>
+TYP Macierz<TYP,ROZMIAR>::Wyznacznik()const
 {
   bool wylaczoneWiersze[ROZMIAR];
   bool wylaczone_kolumny[ROZMIAR];
@@ -96,7 +104,8 @@ double Macierz::Wyznacznik()const
   return wyznacznikRekurencyjny(wylaczoneWiersze, wylaczone_kolumny);
 }
 
-double Macierz::wyznacznikRekurencyjny(bool wylaczoneWiersze[ROZMIAR], bool wylaczone_kolumny[ROZMIAR]) const
+template <class TYP, int ROZMIAR>
+TYP Macierz<TYP,ROZMIAR>::wyznacznikRekurencyjny(bool wylaczoneWiersze[ROZMIAR], bool wylaczone_kolumny[ROZMIAR]) const
 {
   if(sumujTrue(wylaczoneWiersze) == ROZMIAR-1 && sumujTrue(wylaczone_kolumny) == ROZMIAR-1)
     {
@@ -108,8 +117,10 @@ double Macierz::wyznacznikRekurencyjny(bool wylaczoneWiersze[ROZMIAR], bool wyla
     }
 	
   int j = 0;
-  double det = 0;
-  int minus = 1;
+  TYP det;
+  det=0;
+  TYP minus;
+  minus=1;
   int prawdziwy_nr_wiersza = 0;
 	
   while(wylaczone_kolumny[j]) { j++; }
@@ -120,7 +131,7 @@ double Macierz::wyznacznikRekurencyjny(bool wylaczoneWiersze[ROZMIAR], bool wyla
       if(wylaczoneWiersze[i]) continue;
       if((prawdziwy_nr_wiersza)%2 == 0) minus = 1; else minus=-1;
       wylaczoneWiersze[i] = true;
-      det += minus * tab[i][j] * wyznacznikRekurencyjny(wylaczoneWiersze, wylaczone_kolumny);
+      det = det+(minus * tab[i][j] * wyznacznikRekurencyjny(wylaczoneWiersze, wylaczone_kolumny));
       wylaczoneWiersze[i] = false;
       prawdziwy_nr_wiersza++;
     }
@@ -128,7 +139,8 @@ double Macierz::wyznacznikRekurencyjny(bool wylaczoneWiersze[ROZMIAR], bool wyla
   return det;
 }
 
-int Macierz::sumujTrue(bool array[ROZMIAR]) const
+template <class TYP, int ROZMIAR>
+int Macierz<TYP,ROZMIAR>::sumujTrue(bool array[ROZMIAR]) const
 {
   int suma = 0;
   for(int i=0;i<ROZMIAR;++i)

@@ -45,3 +45,4 @@ std::ostream& operator << (std::ostream &Strm, const Wektor<TYP,ROZMIAR> &Wek); 
 //Wektor iloczyn_wektorowy (Wektor & W1,Wektor & W2);//iloczyn wektorowy jest tylko dla ROZMIAR3
 
 #endif
+

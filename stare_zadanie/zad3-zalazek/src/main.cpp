@@ -3,8 +3,8 @@
 #include "LZespolona.hh"
 //#include "SWektor.cpp" Nie potrzebne
 
-//#include "Macierz.hh"
-//#include "UkladRownanLiniowych.hh"
+#include "Macierz.hh"
+#include "UkladRownanLiniowych.hh"
 
 using namespace std;
 int main()
@@ -77,7 +77,7 @@ int main()
   
   if(a=="r")
     {
-      cout<<"Wektor 5 Rzeczywiste"<<endl;
+      /* cout<<"Wektor 5 Rzeczywiste"<<endl;
       Wektor <double,5> E1,E2;
       E2[0]=3;
       E2[3]=2;
@@ -94,12 +94,43 @@ int main()
       cout<<"E1*3: "<<E1*3<<endl;
       cout<<"2.0*E1: "<<2.0*E1<<endl;
       cout<<"E1/2: "<<E1/2<<endl;
-      cout<<"iloczyn skalarny E1*E2: "<<E1*E2<<endl; 
+      cout<<"iloczyn skalarny E1*E2: "<<E1*E2<<endl; */
+      /* cout<<"Macierz 5 Rzeczywiste"<<endl;
+      Macierz <double,5> M1,M2;
+      cout<<"Podaj M1"<<endl;
+      cin>>M1;
+      cout<<M1;
+      cout<<"Podaj M2"<<endl;
+      cin>>M2;
+      cout<<M2;
+      cout<<"Dodawanie M1+M2"<<endl<<M1+M2<<endl;
+      cout<<"Odejmowanie M1-M2"<<endl<<M1-M2<<endl;
+      cout<<"Mnozenie M1*M2"<<endl<<M1*M2<<endl;
+      cout<<"Wektor 5 Rzeczywiste"<<endl;
+      Wektor <double,5> E1;
+      cout<<"Podaj E1"<<endl;
+      cin>>E1;
+      cout<<E1<<endl;
+      cout<<"Mnozenie M1*E1"<<endl<<M1*E1<<endl;
+      cout<<"Transpozycja M1"<<endl<< M1.transpozycja() <<endl;
+      cout<<"Wyznacznik M1"<<endl<< M1.Wyznacznik() <<endl; */
+      cout<<"UkladRownanLiniowych 5 Rzeczywiste"<<endl;
+      UkladRownanLiniowych <double,5> U;
+      Wektor <double,5> blad;
+      cin>>U;
+      cout<<U;
+      cout<<endl<<"Rozwiazanie x = ( ";
+      for(int i=0;i<5;++i)
+	cout<<"x"<<i+1<<", ";
+      cout<<")"<<endl;
+      cout<< U.Oblicz()<<endl;
+      blad=( U.wez_macierz() * U.Oblicz() -U.wez_wektor() );
+      cout<<"Wektor bledu:   Ax-B  = ( "<<blad<<")"<<endl;
     }
 
   if(a=="z")
     {
-      cout<<"Wektor 5 Zespolone"<<endl;
+      /* cout<<"Wektor 5 Zespolone"<<endl;
       Wektor <LZespolona,5> S1, S2;
       S2[0]=1;
       S2[2]=3;
@@ -120,7 +151,38 @@ int main()
       //cout<<"S1*(1-2I): "<<S1*(1-2i)<<endl; Nie potrzebne
       //cout<<"S1*2: "<<S1*2<<endl; Nie potrzebne
       cout<<"Z(1-2i)*S1: "<<Z*S1<<endl;
-      cout<<"S1/Z(1-2i): "<<S1/Z<<endl;
+      cout<<"S1/Z(1-2i): "<<S1/Z<<endl; */
+      /*cout<<"Macierz 5 Zespolone"<<endl;
+      Macierz <LZespolona,5> M1,M2;
+      cout<<"Podaj M1"<<endl;
+      cin>>M1;
+      cout<<M1;
+      cout<<"Podaj M2"<<endl;
+      cin>>M2;
+      cout<<M2;
+      cout<<"Dodawanie M1+M2"<<endl<<M1+M2<<endl;
+      cout<<"Odejmowanie M1-M2"<<endl<<M1-M2<<endl;
+      cout<<"Mnozenie M1*M2"<<endl<<M1*M2<<endl;
+      cout<<"Wektor 5 Zespolone"<<endl;
+      Wektor <LZespolona,5> E1;
+      cout<<"Podaj E1"<<endl;
+      cin>>E1;
+      cout<<E1<<endl;
+      cout<<"Mnozenie M1*E1"<<endl<<M1*E1<<endl;
+      cout<<"Transpozycja M1"<<endl<< M1.transpozycja() <<endl;
+      cout<<"Wyznacznik M1"<<endl<< M1.Wyznacznik() <<endl; */
+      cout<<"UkladRownanLiniowych 5 Zespolone"<<endl;
+      UkladRownanLiniowych <LZespolona,5> U;
+      Wektor <LZespolona,5> blad;
+      cin>>U;
+      cout<<U;
+      cout<<endl<<"Rozwiazanie x = ( ";
+      for(int i=0;i<5;++i)
+	cout<<"x"<<i+1<<", ";
+      cout<<")"<<endl;
+      cout<< U.Oblicz()<<endl;
+      blad=( U.wez_macierz() * U.Oblicz() -U.wez_wektor() );
+      cout<<"Wektor bledu:   Ax-B  = ( "<<blad<<")"<<endl;
     }
 }
 

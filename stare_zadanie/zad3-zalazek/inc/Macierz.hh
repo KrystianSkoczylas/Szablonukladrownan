@@ -1,16 +1,17 @@
 #ifndef MACIERZ_HH
 #define MACIERZ_HH
 
-#include "rozmiar.h"
+//#include "rozmiar.h"
 #include <iostream>
 #include "Wektor.hh"
 
+template <class TYP, int ROZMIAR>
 class Macierz {
-  Wektor tab[ROZMIAR];
-  double wyznacznikRekurencyjny(bool wylaczoneWiersze[ROZMIAR], bool wylaczone_kolumny[ROZMIAR]) const;
+  Wektor<TYP,ROZMIAR> tab[ROZMIAR];
+  TYP wyznacznikRekurencyjny(bool wylaczoneWiersze[ROZMIAR], bool wylaczone_kolumny[ROZMIAR]) const;
   int sumujTrue(bool array[ROZMIAR]) const;
 public:
-  const Wektor & operator[] (int ind) const {
+  const Wektor<TYP,ROZMIAR> & operator[] (int ind) const {
     if (ind < 0 || ind > ROZMIAR) {
       std::cerr << "blad: poza zakresem" << std::endl;
       exit(1);
@@ -18,7 +19,7 @@ public:
     return tab[ind];
   };
 
-  Wektor & operator[] (int ind) {
+  Wektor<TYP,ROZMIAR> & operator[] (int ind) {
     if (ind < 0 || ind > ROZMIAR) {
       std::cerr << "blad: poza zakresem" <<  std::endl;
       exit(1);
@@ -26,18 +27,20 @@ public:
     return tab[ind];
   };
   
-  Macierz  operator + (const Macierz & W) const;//OK bez & bez const
-  Macierz  operator - (const Macierz & W) const;//OK bez & bez const
-  Macierz  operator * (const Macierz & W) const; //OK bez & macierz razy macierz bez const
-  Wektor  operator * (const Wektor & W) const;//OK bez & macierz razy wektor bez const
+  Macierz<TYP,ROZMIAR>  operator + (const Macierz<TYP,ROZMIAR> & W) const;//OK bez & bez const
+  Macierz<TYP,ROZMIAR>  operator - (const Macierz<TYP,ROZMIAR> & W) const;//OK bez & bez const
+  Macierz<TYP,ROZMIAR>  operator * (const Macierz<TYP,ROZMIAR> & W) const; //OK bez & macierzrazymacierz bez const
+  Wektor<TYP,ROZMIAR>  operator * (const Wektor<TYP,ROZMIAR> & W) const;//OK bez & macierz razy wektor bez const
   
-  Macierz  transpozycja() const;//OK bez &
+  Macierz<TYP,ROZMIAR>  transpozycja() const;//OK bez &
   
-  double Wyznacznik() const;//OK
+  TYP Wyznacznik() const;//OK
 };
 
-std::istream& operator >> (std::istream &Strm, Macierz &Mac);//OK
+template <class TYP, int ROZMIAR>
+std::istream& operator >> (std::istream &Strm, Macierz<TYP,ROZMIAR> &Mac);//OK
 
-std::ostream& operator << (std::ostream &Strm, const Macierz &Mac);//OK
+template <class TYP, int ROZMIAR>
+std::ostream& operator << (std::ostream &Strm, const Macierz<TYP,ROZMIAR> &Mac);//OK
 
 #endif

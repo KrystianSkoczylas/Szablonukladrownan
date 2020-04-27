@@ -35,6 +35,7 @@ template <class TYP, int ROZMIAR>
 TYP Wektor<TYP,ROZMIAR>::operator * (const Wektor<TYP,ROZMIAR> & W2) const /*mnozenie wektorow iloczyn skalarny */
 {
   TYP wyn;
+  wyn=0;//poprawa
   for (int i=0;i<ROZMIAR;++i) {
     // wyn = wyn + tab[i] * W2.tab[i];
     wyn += tab[i] * W2.tab[i]; //Obie ok

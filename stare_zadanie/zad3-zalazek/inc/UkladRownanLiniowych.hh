@@ -4,23 +4,26 @@
 #include <iostream>
 #include "Macierz.hh"
 
+template <class TYP, int ROZMIAR>
 class UkladRownanLiniowych {
-  Macierz A;
-  Wektor B;
+  Macierz<TYP,ROZMIAR> A;
+  Wektor<TYP,ROZMIAR> B;
   public:
   UkladRownanLiniowych(){};
-  UkladRownanLiniowych(Macierz AA, Wektor BB) : A(AA), B(BB) {} ;
+  UkladRownanLiniowych(Macierz<TYP,ROZMIAR> AA, Wektor<TYP,ROZMIAR> BB) : A(AA), B(BB) {} ;
   
-  Wektor Oblicz() const; //Oblicz Metoda Cramera
+  Wektor<TYP,ROZMIAR> Oblicz() const; //Oblicz Metoda Cramera
   
-  void zmien_macierz( const Macierz & AA);
-  const Macierz & wez_macierz() const;
-  void zmien_wektor(const Wektor & BB);
-  const Wektor & wez_wektor()const; 
+  void zmien_macierz( const Macierz<TYP,ROZMIAR> & AA);
+  const Macierz<TYP,ROZMIAR> & wez_macierz() const;
+  void zmien_wektor(const Wektor<TYP,ROZMIAR> & BB);
+  const Wektor<TYP,ROZMIAR> & wez_wektor()const; 
 };
 
-std::istream& operator >> (std::istream &Strm, UkladRownanLiniowych &UklRown);
+template <class TYP, int ROZMIAR>
+std::istream& operator >> (std::istream &Strm, UkladRownanLiniowych<TYP,ROZMIAR> &UklRown);
 
-std::ostream& operator << (std::ostream &Strm, const UkladRownanLiniowych &UklRown);
+template <class TYP, int ROZMIAR>
+std::ostream& operator << (std::ostream &Strm, const UkladRownanLiniowych<TYP,ROZMIAR> &UklRown);
 
 #endif

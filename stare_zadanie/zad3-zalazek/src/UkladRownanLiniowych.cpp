@@ -1,30 +1,33 @@
 #include "UkladRownanLiniowych.hh"
 
-std::istream& operator >> (std::istream &Strm, UkladRownanLiniowych &UklRown)/*wczytanie ukladu*/
+template <class TYP, int ROZMIAR>
+std::istream& operator >> (std::istream &Strm, UkladRownanLiniowych<TYP,ROZMIAR> &UklRown)/*wczytanie ukladu*/
 {
-   Macierz tmpA;
-   Wektor tmpB;
+   Macierz<TYP,ROZMIAR> tmpA;
+   Wektor<TYP,ROZMIAR> tmpB;
    Strm>>tmpA>>tmpB;
    UklRown.zmien_macierz(tmpA);
    UklRown.zmien_wektor(tmpB);
    return Strm;
 }
 
-std::ostream& operator << (std::ostream &Strm, const UkladRownanLiniowych &UklRown)/*wyswietlenie ukladu*/
+template <class TYP, int ROZMIAR>
+std::ostream& operator << (std::ostream &Strm, const UkladRownanLiniowych<TYP,ROZMIAR> &UklRown)/*wyswietlenie*/
 {
   Strm<<"Macierz A:"<<std::endl<<UklRown.wez_macierz()<<std::endl;
   Strm<<"Wektor B:"<<std::endl<<UklRown.wez_wektor()<<std::endl;
   return Strm;
 }
 
-Wektor UkladRownanLiniowych::Oblicz() const
+template <class TYP, int ROZMIAR>
+Wektor<TYP,ROZMIAR> UkladRownanLiniowych<TYP,ROZMIAR>::Oblicz() const
 {
-  Wektor wyn;
-  double wyznacznik;
-  Macierz T;
+  Wektor<TYP,ROZMIAR> wyn;
+  TYP wyznacznik;
+  Macierz<TYP,ROZMIAR> T;
   wyznacznik=A.Wyznacznik();
-  if(wyznacznik==0)
-    {std::cerr<<"Wyzacznik glowny "<<wyznacznik<<".Brak rozwiazan."; exit(1);}
+  //if(wyznacznik==0)
+  // {std::cerr<<"Wyzacznik glowny "<<wyznacznik<<".Brak rozwiazan."; exit(1);}
   for(int i=0;i<ROZMIAR;++i)
     {
       T=A.transpozycja();
@@ -37,7 +40,8 @@ Wektor UkladRownanLiniowych::Oblicz() const
   return wyn;
 }
 
-void UkladRownanLiniowych::zmien_macierz( const Macierz & AA)//set_A
+template <class TYP, int ROZMIAR>
+void UkladRownanLiniowych<TYP,ROZMIAR>::zmien_macierz( const Macierz<TYP,ROZMIAR> & AA)//set_A
 {
   for(int i=0;i<ROZMIAR;++i)
     {
@@ -48,12 +52,14 @@ void UkladRownanLiniowych::zmien_macierz( const Macierz & AA)//set_A
     }
 }
 
-const Macierz & UkladRownanLiniowych::wez_macierz() const//get_A
+template <class TYP, int ROZMIAR>
+const Macierz<TYP,ROZMIAR> & UkladRownanLiniowych<TYP,ROZMIAR>::wez_macierz() const//get_A
 {
   return A;
 }
 
-void UkladRownanLiniowych::zmien_wektor(const Wektor & BB)//set_B
+template <class TYP, int ROZMIAR>
+void UkladRownanLiniowych<TYP,ROZMIAR>::zmien_wektor(const Wektor<TYP,ROZMIAR> & BB)//set_B
 {
   for(int i=0;i<ROZMIAR;++i)
     {
@@ -61,7 +67,8 @@ void UkladRownanLiniowych::zmien_wektor(const Wektor & BB)//set_B
     }
 }
 
-const Wektor & UkladRownanLiniowych::wez_wektor()const//get_B
+template <class TYP, int ROZMIAR>
+const Wektor<TYP,ROZMIAR> & UkladRownanLiniowych<TYP,ROZMIAR>::wez_wektor()const//get_B
 {
   return B;
 }
