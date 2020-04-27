@@ -2,6 +2,7 @@
 #include "Macierz.cpp"
 #include "LZespolona.hh"
 #include "UkladRownanLiniowych.cpp"
+
 template class Wektor<double,3>;
 template std::istream& operator >> (std::istream &Strm, Wektor<double,3> &Wek);
 template std::ostream& operator << (std::ostream &Strm, const Wektor<double,3> &Wek);

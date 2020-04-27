@@ -21,21 +21,11 @@ std::ostream& operator << (std::ostream &Strm, const Wektor<TYP,ROZMIAR> &Wek)
   return Strm;
 }
 
-/*double Wektor:: dlugosc() const
-{
-  double wyn=0;
-  for (int i=0;i<ROZMIAR;++i)
-    {
-      wyn += tab[i] * tab[i]; 
-    }
-  return sqrt(wyn);
-}*/
-
 template <class TYP, int ROZMIAR>
-TYP Wektor<TYP,ROZMIAR>::operator * (const Wektor<TYP,ROZMIAR> & W2) const /*mnozenie wektorow iloczyn skalarny */
+TYP Wektor<TYP,ROZMIAR>::operator * (const Wektor<TYP,ROZMIAR> & W2) const /*mnozenie wektorow iloczyn skalarny*/
 {
   TYP wyn;
-  wyn=0;//poprawa
+  wyn=0;
   for (int i=0;i<ROZMIAR;++i) {
     // wyn = wyn + tab[i] * W2.tab[i];
     wyn += tab[i] * W2.tab[i]; //Obie ok
@@ -53,6 +43,7 @@ Wektor<TYP,ROZMIAR> Wektor<TYP,ROZMIAR>::operator * (TYP skalar) const /*mnozeni
     }
   return wyn;
 }
+
 template <class TYP, int ROZMIAR>
 Wektor<TYP,ROZMIAR> Wektor<TYP,ROZMIAR>::operator / (TYP skalar) const
 {// W/2
@@ -65,7 +56,7 @@ Wektor<TYP,ROZMIAR> Wektor<TYP,ROZMIAR>::operator / (TYP skalar) const
 }
 
 template <class TYP, int ROZMIAR>
-Wektor<TYP,ROZMIAR> operator * (TYP skalar, const Wektor<TYP,ROZMIAR> & W2) /*mnozenie liczby przez wektor */
+Wektor<TYP,ROZMIAR> operator * (TYP skalar, const Wektor<TYP,ROZMIAR> & W2) /*mnozenie liczby przez wektor*/
 {//2*W
   Wektor<TYP,ROZMIAR> wyn;
   for(int i=0;i<ROZMIAR;++i)
@@ -76,7 +67,7 @@ Wektor<TYP,ROZMIAR> operator * (TYP skalar, const Wektor<TYP,ROZMIAR> & W2) /*mn
 }
 
 template <class TYP, int ROZMIAR>
-Wektor<TYP,ROZMIAR>  Wektor<TYP,ROZMIAR>::operator + (const Wektor<TYP,ROZMIAR> & W2) const /*dodawaniewektorow */
+Wektor<TYP,ROZMIAR>  Wektor<TYP,ROZMIAR>::operator + (const Wektor<TYP,ROZMIAR> & W2) const /*dodawaniewektorow*/
 {//dziala bez &
   Wektor<TYP,ROZMIAR> wyn;
   for(int i=0;i<ROZMIAR;++i)
@@ -97,13 +88,5 @@ Wektor<TYP,ROZMIAR>  Wektor<TYP,ROZMIAR>::operator - (const Wektor<TYP,ROZMIAR> 
   return wyn;
 }
 
-/*Wektor iloczyn_wektorowy (Wektor & W1,Wektor & W2) tylko wektory o rozmiarz 3 
-{
-  Wektor wyn;
-  wyn[0]=W1[1]*W2[2]-W1[2]*W2[1];
-  wyn[1]=-W1[0]*W2[2]+W1[2]*W2[0];
-  wyn[2]=W1[0]*W2[1]-W1[1]*W2[0];
-  return wyn;
-  }*/
 
 

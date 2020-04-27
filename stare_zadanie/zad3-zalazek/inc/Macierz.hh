@@ -1,7 +1,6 @@
 #ifndef MACIERZ_HH
 #define MACIERZ_HH
 
-//#include "rozmiar.h"
 #include <iostream>
 #include "Wektor.hh"
 
@@ -27,10 +26,10 @@ public:
     return tab[ind];
   };
   
-  Macierz<TYP,ROZMIAR>  operator + (const Macierz<TYP,ROZMIAR> & W) const;//OK bez & bez const
-  Macierz<TYP,ROZMIAR>  operator - (const Macierz<TYP,ROZMIAR> & W) const;//OK bez & bez const
-  Macierz<TYP,ROZMIAR>  operator * (const Macierz<TYP,ROZMIAR> & W) const; //OK bez & macierzrazymacierz bez const
-  Wektor<TYP,ROZMIAR>  operator * (const Wektor<TYP,ROZMIAR> & W) const;//OK bez & macierz razy wektor bez const
+  Macierz<TYP,ROZMIAR>  operator + (const Macierz<TYP,ROZMIAR> & W) const;//OKbez& bez const
+  Macierz<TYP,ROZMIAR>  operator - (const Macierz<TYP,ROZMIAR> & W) const;//OKbez& bez const
+  Macierz<TYP,ROZMIAR>  operator * (const Macierz<TYP,ROZMIAR> & W) const; //OKbez& macierzrazymacierz bez const
+  Wektor<TYP,ROZMIAR>  operator * (const Wektor<TYP,ROZMIAR> & W) const;//OKbez& macierz razy wektor bez const
   
   Macierz<TYP,ROZMIAR>  transpozycja() const;//OK bez &
   

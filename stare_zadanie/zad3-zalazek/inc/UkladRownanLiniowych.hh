@@ -8,7 +8,7 @@ template <class TYP, int ROZMIAR>
 class UkladRownanLiniowych {
   Macierz<TYP,ROZMIAR> A;
   Wektor<TYP,ROZMIAR> B;
-  public:
+public:
   UkladRownanLiniowych(){};
   UkladRownanLiniowych(Macierz<TYP,ROZMIAR> AA, Wektor<TYP,ROZMIAR> BB) : A(AA), B(BB) {} ;
   

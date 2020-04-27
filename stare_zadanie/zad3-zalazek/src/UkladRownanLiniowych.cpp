@@ -3,12 +3,12 @@
 template <class TYP, int ROZMIAR>
 std::istream& operator >> (std::istream &Strm, UkladRownanLiniowych<TYP,ROZMIAR> &UklRown)/*wczytanie ukladu*/
 {
-   Macierz<TYP,ROZMIAR> tmpA;
-   Wektor<TYP,ROZMIAR> tmpB;
-   Strm>>tmpA>>tmpB;
-   UklRown.zmien_macierz(tmpA);
-   UklRown.zmien_wektor(tmpB);
-   return Strm;
+  Macierz<TYP,ROZMIAR> tmpA;
+  Wektor<TYP,ROZMIAR> tmpB;
+  Strm>>tmpA>>tmpB;
+  UklRown.zmien_macierz(tmpA);
+  UklRown.zmien_wektor(tmpB);
+  return Strm;
 }
 
 template <class TYP, int ROZMIAR>
@@ -26,8 +26,6 @@ Wektor<TYP,ROZMIAR> UkladRownanLiniowych<TYP,ROZMIAR>::Oblicz() const
   TYP wyznacznik;
   Macierz<TYP,ROZMIAR> T;
   wyznacznik=A.Wyznacznik();
-  //if(wyznacznik==0)
-  // {std::cerr<<"Wyzacznik glowny "<<wyznacznik<<".Brak rozwiazan."; exit(1);}
   for(int i=0;i<ROZMIAR;++i)
     {
       T=A.transpozycja();
