@@ -102,19 +102,13 @@ std::ostream & operator <<(std::ostream & str, LZespolona Skl) /*wyswietlenie li
   str<<'('<<Skl.re<<std::showpos<<Skl.im<<std::noshowpos<<'i'<<')';
   return str;
 }
-/*
-LZespolona operator = (LZespolona Skl1,LZespolona Skl2)
-{
-  //must be a nonstatic member function
-}
-*/
+
 LZespolona LZespolona::operator += (LZespolona Skl)
 {
   re+=Skl.re;
   im+=Skl.im;
   return *this;
 }
-//x+=y to samo co x=x+y 
 
 LZespolona LZespolona::operator = (double  Liczba)
 {
